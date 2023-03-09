@@ -18,6 +18,12 @@ class ChatBot extends Component
 
     public function submit()
     {
-        $this->input = 'xxxx';
+        $this->chats[] = ['user' => 'human', 'request' => $this->input];
+
+        $result = OpenAI::completions()->create(['model' => 'davinci', 'prompt' => $this->input]);
+
+        $this->chats[] = ['user' => 'ai', 'response' => data_get($result->toArray(), "choices.0.text")];
+
+        $this->input = "";
     }
 }
