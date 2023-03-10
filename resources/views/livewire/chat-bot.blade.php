@@ -4,7 +4,7 @@
             @if ($chat['user'] === 'ai')
                 <div class="flex justify-start">
                     <p class="max-w-xs bg-orange-200 rounded-tl-3xl rounded-tr-3xl rounded-br-3xl p-3">
-                        {{ $chat['response'] }}
+                        {!! $chat['response'] !!}
                     </p>
                 </div>
             @else
