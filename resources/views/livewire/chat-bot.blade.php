@@ -3,9 +3,14 @@
         @foreach ($chats as $chat)
             @if ($chat['user'] === 'ai')
                 <div class="flex justify-start">
-                    <p class="max-w-xs bg-orange-200 rounded-tl-3xl rounded-tr-3xl rounded-br-3xl p-3">
-                        {!! $chat['response'] !!}
-                    </p>
+                    @if ($chat['type'] === 'image')
+                        <img src="{{ $chat['response'] }}" alt="image"
+                            class="max-w-xs bg-orange-200 rounded-tl-3xl rounded-tr-3xl rounded-br-3xl p-3">
+                    @else
+                        <p class="max-w-xs bg-orange-200 rounded-tl-3xl rounded-tr-3xl rounded-br-3xl p-3">
+                            {!! $chat['response'] !!}
+                        </p>
+                    @endif
                 </div>
             @else
                 <div class="flex justify-end">
@@ -21,6 +26,12 @@
         <label for="" class="flex-1">
             <input wire:model="input" type="text" class="bg-white p-3 w-full rounded-l-2xl"
                 placeholder="type something..." />
+        </label>
+        <label for="">
+            <select wire:model="type">
+                <option value="chat">Chat</option>
+                <option value="image">Image</option>
+            </select>
         </label>
         <button wire:click="submit" class="bg-indigo-900 text-white px-4 py-2 rounded-2xl h-full">
             Submit
