@@ -1,5 +1,5 @@
 <div class="h-full w-full">
-    <div class="h-full overflow-y-scroll space-y-4">
+    <div class="h-full overflow-y-scroll space-y-4 bg-stone-100 rounded-xl px-3">
         @foreach ($chats as $chat)
             @if ($chat['user'] === 'ai')
                 <div class="flex justify-start">
@@ -24,11 +24,11 @@
 
     <div class="flex items-center bg-white overflow-hidden p-1 rounded-2xl">
         <label for="" class="flex-1">
-            <input wire:model="input" type="text" class="bg-white p-3 w-full rounded-l-2xl"
+            <input wire:model="input" type="text" class="bg-white p-3 w-full rounded-2xl"
                 placeholder="type something..." />
         </label>
-        <label for="">
-            <select wire:model="type">
+        <label for="" class="mx-2">
+            <select wire:model="type" class="rounded-xl py-3">
                 <option value="chat">Chat</option>
                 <option value="image">Image</option>
             </select>
